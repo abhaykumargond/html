@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WalkReward - Earn While You Walk</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="welcome-screen">
+        <div class="welcome-content">
+            <div class="walking-character">
+                <div class="character-body">
+                    <div class="head"></div>
+                    <div class="body"></div>
+                    <div class="arm left"></div>
+                    <div class="arm right"></div>
+                    <div class="leg left"></div>
+                    <div class="leg right"></div>
+                </div>
+            </div>
+            <div class="welcome-text">
+                <h1 class="animated-text">WALK AND GET FREE REDEEM CODE</h1>
+                <p class="subtitle">Start walking to earn rewards!</p>
+                <button class="start-button" onclick="startApp()">
+                    <span>Get Started</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container main-content" style="display: none;">
+        <header>
+            <h1>WalkReward</h1>
+            <p class="tagline">Step into a healthier lifestyle and earn rewards!</p>
+        </header>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Transform Your Steps into Rewards</h2>
+                <p>Every step counts towards a healthier you and exciting rewards!</p>
+                <div class="cta-button">Start Walking Now</div>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="stat-card">
+                <i class="fas fa-shoe-prints"></i>
+                <h3>Today's Steps</h3>
+                <p id="currentSteps">0</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-star"></i>
+                <h3>Points Earned</h3>
+                <p id="currentPoints">0</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-trophy"></i>
+                <h3>Total Steps</h3>
+                <p id="totalSteps">0</p>
+            </div>
+        </section>
+
+        <section class="daily-bonus">
+            <div class="bonus-card">
+                <div class="bonus-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <div class="bonus-content">
+                    <h3>Daily Bonus</h3>
+                    <p>Claim your daily 1000 coins!</p>
+                    <button id="claimBonusBtn" class="claim-btn">
+                        <i class="fas fa-coins"></i> Claim Now
+                    </button>
+                </div>
+                <div class="bonus-timer" id="bonusTimer">
+                    <i class="fas fa-clock"></i>
+                    <span>Next bonus in: 24:00:00</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="profile">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="profile-info">
+                    <h2>Welcome, User!</h2>
+                    <p class="streak">🔥 5 Day Streak</p>
+                </div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Level 5</h3>
+                    <p>Next Level: 2000 steps</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-fire"></i>
+                    <h3>Daily Streak</h3>
+                    <p>5 Days</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Weekly Goal</h3>
+                    <p>35,000 steps</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="daily-challenges">
+            <h2>Daily Challenges</h2>
+            <div class="challenge-cards">
+                <div class="challenge-card">
+                    <div class="challenge-icon">
+                        <i class="fas fa-walking"></i>
+                    </div>
+                    <div class="challenge-info">
+                        <h3>Morning Walk</h3>
+                        <p>Walk 5000 steps before 10 AM</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 60%"></div>
+                        </div>
+                        <span class="reward">+50 Points</span>
+                    </div>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <div class="challenge-info">
+                        <h3>Weekend Warrior</h3>
+                        <p>Complete 15,000 steps this weekend</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 30%"></div>
+                        </div>
+                        <span class="reward">+100 Points</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wallet">
+            <h2>Redeem Your Rewards</h2>
+            <div class="playstore-banner">
+                <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" class="playstore-image">
+            </div>
+            <div class="reward-cards">
+                <div class="reward-card">
+                    <div class="gift-card-image">
+                        <img src="playstore.png" alt="Google Play Store" class="playstore-card-image">
+                        <div class="amount-badge">₹10</div>
+                    </div>
+                    <div class="reward-details">
+                        <h3>Google Play Gift Card</h3>
+                        <p>1000 Steps Required</p>
+                        <div class="progress-bar">
+                            <div class="progress" id="progress10"></div>
+                        </div>
+                        <button onclick="showRedeemModal(1000, '2L9C2WW2ETYX3HW1', 10)" class="redeem-btn">
+                            <i class="fas fa-gift"></i> Redeem Now
+                        </button>
+                    </div>
+                </div>
+                <div class="reward-card">
+                    <div class="gift-card-image">
+                        <img src="playstore.png" alt="Google Play Store" class="playstore-card-image">
+                        <div class="amount-badge">₹20</div>
+                    </div>
+                    <div class="reward-details">
+                        <h3>Google Play Gift Card</h3>
+                        <p>2000 Steps Required</p>
+                        <div class="progress-bar">
+                            <div class="progress" id="progress20"></div>
+                        </div>
+                        <button onclick="showRedeemModal(2000, 'ONE REDEEM PER DAY', 20)" class="redeem-btn">
+                            <i class="fas fa-gift"></i> Redeem Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="history">
+            <h2>Redemption History</h2>
+            <div class="history-list" id="redemptionHistory">
+                <!-- History items will be added here dynamically -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Gift Card Redemption Modal -->
+    <div class="modal" id="redeemModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Redeem Your Gift Card</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="gift-card-preview">
+                    <img src="giftcard.jpg" alt="Gift Card">
+                    <div class="gift-card-code hidden" id="giftCardCode"></div>
+                </div>
+                <div class="gift-card-details">
+                    <p>Amount: <span id="giftCardAmount"></span></p>
+                    <p>Steps Required: <span id="giftCardSteps"></span></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="confirm-redeem-btn" onclick="confirmRedeem()">
+                    <i class="fas fa-check"></i> Redeem Now
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
